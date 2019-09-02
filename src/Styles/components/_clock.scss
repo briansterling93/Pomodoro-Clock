@@ -1,0 +1,26 @@
+#clock {
+    width: 350px;
+    height: 350px;
+    background-color: $cool-blue;
+    border: 1px solid white;
+    color: $darker-white;
+    border-radius: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif
+}
+
+#clockDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#clockTitle {
+    text-align: center;
+}
+
+#clockTime {
+    padding-top: 8px;
+    text-align: center;
+    font-size: 70px;
+}
+
+

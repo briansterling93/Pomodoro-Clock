@@ -1,0 +1,60 @@
+#increment {
+    background-color: transparent;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+#decrement {
+    background-color: transparent;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+#breakBtnsDiv {
+    text-align: center;
+}
+
+#lengthBtnsDiv {
+    text-align: center;
+}
+
+#span1 {
+    padding: 15px;
+}
+
+#span2 {
+    padding: 15px;
+}
+
+#clockBtns {
+    display: flex;
+    justify-content: space-around;
+}
+
+#startBtn {
+    background-color: transparent;
+    border: none;
+    color: $darker-white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#resetBtn {
+    background-color: transparent;
+    border: none;
+    color: $darker-white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}

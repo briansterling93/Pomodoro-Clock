@@ -1,0 +1,11 @@
+body {
+    background-color: $cool-blue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif
+}
+
+#lengthDiv {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    padding-top: 20px;
+}
