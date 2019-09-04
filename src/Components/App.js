@@ -3,53 +3,79 @@ import React from "react";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleBreakAdd = this.handleBreakAdd.bind(this);
-    this.handleBreakMinus = this.handleBreakMinus.bind(this);
-    this.handleSessionAdd = this.handleSessionAdd.bind(this);
-    this.handleSessionMinus = this.handleSessionMinus.bind(this);
+    this.incrementSession = this.incrementSession.bind(this);
+    this.decrementSession = this.decrementSession.bind(this);
+    this.startClock = this.startClock.bind(this);
     this.state = {
       bLength: 5,
       sLength: 25,
-      timer: 25,
-      session: "Session"
+      session: "Session",
+      minutes: 25,
+      seconds: 0
     };
   }
 
-  handleBreakAdd() {
-    if (this.state.bLength === 60) {
-      this.setState({ bLength: 60 });
-    } else
-      this.setState(prevState => {
-        return { bLength: prevState.bLength + 1 };
-      });
+incrementSession() {
+  this.setState(prevState => {
+   return { sLength: prevState.sLength + 1 }
+  })
+
+  this.setState(prevState => {
+    return { minutes: prevState.sLength }
+  })
+
+  this.setState({
+    seconds: `00`
+  })
+}
+
+decrementSession() {
+  this.setState(prevState => {
+    return { sLength: prevState.sLength - 1 }
+  })
+
+  this.setState(prevState => {
+    return { minutes: prevState.sLength }
+  })
+
+  if(this.state.sLength === 1) {
+    this.setState(prevState => {
+      return { sLength: prevState.sLength + 1 }
+    })
+
+    this.setState(prevState => {
+      return { minutes: prevState.sLength}
+    })
   }
 
-  handleBreakMinus() {
-    if (this.state.bLength === 1) {
-      this.setState({ bLength: 1 });
-    } else
-      this.setState(prevState => {
-        return { bLength: prevState.bLength - 1 };
-      });
-  }
+  this.setState({
+    seconds: `00`
+  })
+}
 
-  handleSessionAdd() {
-    if (this.state.sLength === 60) {
-      this.setState({ sLength: 60 });
-    } else
-      this.setState(prevState => {
-        return { sLength: prevState.sLength + 1 };
-      });
-  }
+startClock() {
+  setInterval(() => {
+    this.setState({
+      seconds: 59
+    })
 
-  handleSessionMinus() {
-    if (this.state.sLength === 1) {
-      this.setState({ sLength: 1 });
-    } else
-      this.setState(prevState => {
-        return { sLength: prevState.sLength - 1 };
-      });
-  }
+    this.setState(prevState => {
+      return { minutes: prevState.sLength - 1 }
+    })
+  }, 1000)
+}
+
+// startClock() {
+//   this.setState({
+//     seconds: 59
+//   })
+
+//   const y = this.setState(prevState => {
+//     return { minutes: prevState.sLength - 1 }
+//   })
+// }
+
+
 
   render() {
     return (
@@ -62,17 +88,17 @@ class App extends React.Component {
             <h3>Break Length</h3>
             <div id="breakBtnsDiv">
               <input
+                className='btn'
                 type="button"
                 id="increment"
                 value="+"
-                onClick={this.handleBreakAdd}
               />
               <span id="span1">{this.state.bLength}</span>
               <input
+                className='btn'
                 type="button"
                 id="decrement"
                 value="-"
-                onClick={this.handleBreakMinus}
               />
             </div>
           </div>
@@ -80,17 +106,19 @@ class App extends React.Component {
             <h3>Session Length</h3>
             <div id="lengthBtnsDiv">
               <input
+              className='btn'
                 type="button"
                 id="increment"
                 value="+"
-                onClick={this.handleSessionAdd}
+                onClick={this.incrementSession}
               />
               <span id="span2">{this.state.sLength}</span>
               <input
+              className='btn'
                 type="button"
                 id="decrement"
                 value="-"
-                onClick={this.handleSessionMinus}
+                onClick={this.decrementSession}
               />
             </div>
           </div>
@@ -98,10 +126,10 @@ class App extends React.Component {
         <div id="clockDiv">
           <div id="clock">
             <h1 id="clockTitle">{this.state.session}</h1>
-            <p id="clockTime">{this.state.timer} : 00</p>
+            <p id="clockTime">{this.state.minutes} : {this.state.seconds} </p>
             <div id="clockBtns">
-              <button id="startBtn">Start</button>
-              <button id="resetBtn">Reset</button>
+              <button id="startBtn" className='btn' onClick={this.startClock}>Start</button>
+              <button id="resetBtn" className='btn' >Reset</button>
             </div>
           </div>
         </div>

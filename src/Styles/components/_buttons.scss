@@ -36,25 +36,41 @@
 
 #clockBtns {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-top: 15px;
 }
 
 #startBtn {
     background-color: transparent;
     border: none;
     color: $darker-white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif;
     outline: none;
     font-size: 15px;
+    font-family: 'Chilanka', 'Arial Narrow', monospace, sans-serif;
     cursor: pointer;
 }
 
-#resetBtn {
+.btn {
     background-color: transparent;
     border: none;
-    color: $darker-white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', monospace, sans-serif;
+    color: white;
     outline: none;
     font-size: 15px;
-    cursor: pointer;
+    font-family: 'Chilanka', 'Arial Narrow', monospace, sans-serif;
+}
+
+
+#startBtn {
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px $cool-blue;
+
+}
+
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 5px 10px #6B6B6B;
 }
