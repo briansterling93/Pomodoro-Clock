@@ -3,17 +3,20 @@ import React from "react";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.resetClock = this.resetClock.bind(this);
     this.incrementSession = this.incrementSession.bind(this);
     this.decrementSession = this.decrementSession.bind(this);
     this.startClock = this.startClock.bind(this);
+    this.breakClock = this.breakClock.bind(this);
     this.state = {
       bLength: 5,
       sLength: 25,
       session: "Session",
       minutes: 25,
-      seconds: 0
+      seconds: '00'
     };
   }
+
 
 incrementSession() {
   this.setState(prevState => {
@@ -54,31 +57,61 @@ decrementSession() {
 }
 
 startClock() {
-  setInterval(() => {
+
     this.setState({
       seconds: 59
     })
 
     this.setState(prevState => {
-      return { minutes: prevState.sLength - 1 }
+      return { minutes: prevState.minutes - 1 }
     })
+
+    this.timer = setInterval(() => {
+    this.setState(prevState => {
+      return { seconds: prevState.seconds - 1 }
+    }) 
+
+    if(this.state.seconds === -1){
+      this.setState({
+        seconds: 59
+      })
+    
+      this.setState(prevState => {
+        return { minutes: prevState.minutes - 1 }
+      })
+    } else {
+      if(this.state.minutes === 0 && this.state.seconds === 0) {
+        this.setState({
+          minutes: '00',
+          seconds: '00'
+        })
+        clearInterval(this.timer)
+      }
+    }
   }, 1000)
+
 }
 
-// startClock() {
-//   this.setState({
-//     seconds: 59
-//   })
+resetClock() {
+  clearInterval(this.timer)
+  this.setState({
+    minutes: 25,
+    seconds: `00`,
+    sLength: 25,
+    session: 'Session'
+  })
+}
 
-//   const y = this.setState(prevState => {
-//     return { minutes: prevState.sLength - 1 }
-//   })
-// }
-
-
+breakClock() {
+  this.setState({
+    session: 'Break',
+    minutes: this.state.bLength
+  })
+}
 
   render() {
     return (
+      
       <div>
         <div id="title">
           <h1>Pomodoro Clock</h1>
@@ -128,8 +161,9 @@ startClock() {
             <h1 id="clockTitle">{this.state.session}</h1>
             <p id="clockTime">{this.state.minutes} : {this.state.seconds} </p>
             <div id="clockBtns">
-              <button id="startBtn" className='btn' onClick={this.startClock}>Start</button>
-              <button id="resetBtn" className='btn' >Reset</button>
+              <button id="startBtn" className='btn' onClick={this.startClock}>Start Session</button>
+              <button id="resetBtn" className='btn' onClick={this.resetClock}>Reset</button>
+              <button id="startBrkBtn" className='btn' onClick={this.breakClock}>Start Break</button>
             </div>
           </div>
         </div>
