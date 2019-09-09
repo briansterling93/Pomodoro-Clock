@@ -8,6 +8,8 @@ class App extends React.Component {
     this.decrementSession = this.decrementSession.bind(this);
     this.startClock = this.startClock.bind(this);
     this.breakClock = this.breakClock.bind(this);
+    this.incrementBreak = this.incrementBreak.bind(this);
+    this.decrementBreak = this.decrementBreak.bind(this);
     this.state = {
       bLength: 5,
       sLength: 25,
@@ -59,6 +61,8 @@ decrementSession() {
 startClock() {
 
     this.setState({
+      minutes: this.state.sLength,
+      session: 'Session',
       seconds: 59
     })
 
@@ -82,8 +86,9 @@ startClock() {
     } else {
       if(this.state.minutes === 0 && this.state.seconds === 0) {
         this.setState({
-          minutes: '00',
-          seconds: '00'
+          minutes: '0',
+          seconds: '00',
+          session: 'Session Complete!'
         })
         clearInterval(this.timer)
       }
@@ -93,7 +98,8 @@ startClock() {
 }
 
 resetClock() {
-  clearInterval(this.timer)
+  clearInterval(this.timer);
+  clearInterval(this.breakTimer);
   this.setState({
     minutes: 25,
     seconds: `00`,
@@ -105,8 +111,79 @@ resetClock() {
 breakClock() {
   this.setState({
     session: 'Break',
-    minutes: this.state.bLength
+    minutes: this.state.bLength,
+    seconds: 59
   })
+
+  this.setState(prevState => {
+    return { minutes: prevState.minutes - 1 }
+  })
+
+  this.breakTimer = setInterval(() => {
+    this.setState(prevState => {
+      return { seconds: prevState.seconds - 1}
+    })
+
+    if(this.state.seconds === -1) {
+      this.setState(prevState => {
+        return { 
+          seconds: 59,
+          minutes: prevState.minutes - 1
+        }
+      })
+    } 
+
+      if(this.state.seconds === 0 && this.state.minutes === 0) {
+        this.setState({
+          minutes: `0`,
+          seconds: `00`,
+          session: 'Break Complete!'
+        })
+        clearInterval(this.breakTimer);
+      }
+  }, 1000)
+}
+
+incrementBreak() {
+
+ this.setState({
+   session: 'Break'
+ })
+  
+ this.setState(prevState => {
+   return { bLength: prevState.bLength + 1 }
+ })
+
+ this.setState(prevState=> {
+   return { minutes: prevState.bLength }
+ })
+ 
+}
+
+decrementBreak() {
+
+  this.setState({
+    session: 'Break'
+  }) 
+
+  this.setState(prevState => {
+    return { bLength: prevState.bLength - 1 }
+  })
+
+  this.setState(prevState=> {
+   return { minutes: prevState.bLength }
+ })
+
+ if(this.state.bLength === 1) {
+   this.setState({
+     bLength: 1
+   })
+
+   this.setState(prevState=> {
+    return { minutes: prevState.bLength }
+  })
+   
+ }
 }
 
   render() {
@@ -125,6 +202,7 @@ breakClock() {
                 type="button"
                 id="increment"
                 value="+"
+                onClick={this.incrementBreak}
               />
               <span id="span1">{this.state.bLength}</span>
               <input
@@ -132,6 +210,7 @@ breakClock() {
                 type="button"
                 id="decrement"
                 value="-"
+                onClick={this.decrementBreak}
               />
             </div>
           </div>
