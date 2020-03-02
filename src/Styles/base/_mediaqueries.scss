@@ -1,0 +1,185 @@
+@media screen and (max-width: 414px) {
+  * {
+    margin: 0;
+    padding: 0;
+    // box-sizing: border-box;
+
+    .btn:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn:active {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  #lengthDiv {
+    padding-top: 5rem;
+  }
+
+  #breakLength {
+    padding-right: 3.5rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  #sessionLength {
+    padding-left: 3.5rem;
+    padding-bottom: 2.5rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  #increment {
+    font-size: 1rem;
+  }
+
+  #decrement {
+    font-size: 1rem;
+  }
+
+  #mq-title {
+    color: transparent;
+  }
+
+  #clockDiv {
+    padding-bottom: 0.5rem;
+  }
+
+  #clock {
+    width: 22rem;
+    height: 280px;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    border-radius: 50%;
+    font-family: "Chilanka", "Arial Narrow", monospace, sans-serif;
+
+    h1 {
+      padding-top: 1.5rem;
+    }
+  }
+
+  #clockTime {
+    padding-top: 1.2rem;
+  }
+} //end of media query 1
+
+@media screen and (max-width: 812px) {
+  * {
+    margin: 0;
+    padding: 0;
+    // box-sizing: border-box;
+
+    .btn:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn:active {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    padding-bottom: 1rem;
+  }
+
+  #clockBtns {
+    padding-bottom: 1rem;
+  }
+
+  #startBtn {
+    font-size: 1rem;
+  }
+
+  #title {
+    padding-top: 1rem;
+  }
+  #resetBtn {
+    font-size: 1rem;
+  }
+
+  #startBrkBtn {
+    font-size: 1rem;
+  }
+
+  #lengthDiv {
+    padding-top: 0.5rem;
+  }
+
+  #breakLength {
+    padding-right: 3.5rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  #sessionLength {
+    padding-left: 3.5rem;
+    padding-bottom: 2.5rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  #increment {
+    font-size: 1rem;
+  }
+
+  #decrement {
+    font-size: 1rem;
+  }
+
+  #mq-title {
+    color: transparent;
+  }
+
+  #clockDiv {
+    padding-bottom: 4rem;
+  }
+
+  #clock {
+    width: 22rem;
+    height: 200px;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    border-radius: 50%;
+    font-family: "Chilanka", "Arial Narrow", monospace, sans-serif;
+  }
+
+  #clockTime {
+    padding-top: 1.2rem;
+    font-size: 2rem;
+  }
+} //end of media query 1 (landscape view)
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 320px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}

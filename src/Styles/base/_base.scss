@@ -1,12 +1,11 @@
 body {
-    background-color: $darker-blue;
-    font-family: 'Chilanka', 'Arial Narrow', monospace, sans-serif;
+  background-color: $darker-blue;
+  font-family: "Chilanka", "Arial Narrow", monospace, sans-serif;
 }
 
 #lengthDiv {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  padding-top: 20px;
 }
-
