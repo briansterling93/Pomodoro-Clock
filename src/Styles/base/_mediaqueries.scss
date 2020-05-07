@@ -74,9 +74,9 @@
   #clockTime {
     padding-top: 1.2rem;
   }
-} //end of media query 1
+}
 
-@media screen and (max-width: 812px) {
+@media screen and (min-width: 500) and (max-width: 812px) {
   * {
     margin: 0;
     padding: 0;
@@ -93,11 +93,11 @@
     }
   }
 
-  html,
-  body {
-    overflow-x: hidden;
-    padding-bottom: 1rem;
-  }
+  // html,
+  // body {
+  //   overflow-x: hidden;
+  //   padding-bottom: 1rem;
+  // }
 
   #clockBtns {
     padding-bottom: 1rem;
@@ -170,16 +170,3 @@
     font-size: 2rem;
   }
 } //end of media query 1 (landscape view)
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-@media screen and (max-width: 320px) {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-}
